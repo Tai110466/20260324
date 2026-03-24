@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js with iframe Background</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* 隱藏滾動條，避免畫面破版 */
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            z-index: 1; /* 將 iframe 放在下層 */
+        }
+        /* p5.js 預設會將 canvas 包在 <main> 標籤中 */
+        main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2; /* 將 p5 畫布放在上層 */
+            pointer-events: none; /* 讓滑鼠事件可以穿透畫布，操作底下的 iframe */
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://www.et.tku.edu.tw"></iframe>
+    <script src="sketch.js"></script>
+</body>
+</html>
